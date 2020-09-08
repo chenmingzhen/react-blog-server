@@ -47,6 +47,21 @@ class HomeController extends Controller {
     }
   }
 
+  //获得文章列表
+  async getArticleListById() {
+    const sql = 'SELECT article.id as id,' +
+        'article.title as title,' +
+        'article.introduce as introduce,' +
+        'article.view_count as view_count,' +
+        'FROM_UNIXTIME(article.addTime,\'%Y-%m-%d\' ) as addTime,' +
+        'type.typeName as typeName ' +
+        'FROM article LEFT JOIN type ON article.type_id = type.Id ' +
+        'WHERE article.type_id=' + this.ctx.params.id
+
+    const resList = await this.app.mysql.query(sql)
+    this.ctx.body = { list: resList }
+  }
+
   async getTypeInfo() {
     const result = await this.app.mysql.select('type')
     this.ctx.body = { data: result }

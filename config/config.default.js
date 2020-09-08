@@ -42,7 +42,7 @@ module.exports = appInfo => {
     domainWhiteList: [ '*' ],
   }
   config.cors = {
-    origin: 'http://localhost:3000', //允许这个地址进行跨域
+    origin: 'https://www.isonepoch.cn', //允许这个地址进行跨域 //http://localhost:3000
     credentials: true, //允许Cook可以跨域
     allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH,OPTIONS',
     /*
